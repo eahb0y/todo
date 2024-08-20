@@ -7,10 +7,12 @@ class ThemeColors {
   static const primaryColor = Color(0xFF009FEE);
   static const errorColor = Color(0xFFD2341D);
   static const disabledColor = Color(0x4D009FEE);
+  static const iconColor = Color(0xFF6B7280);
 }
 
 class AppColors {
   static const white = Color(0xFFFFFFFF);
+  static const black = Color(0xFF000000);
   static const grayNavigator = Color(0xFFEFEFEF);
   static const weekDaysColor = Color(0xFF969696);
   static const daysColor = Color(0xFF292929);
@@ -18,4 +20,7 @@ class AppColors {
   static const textField = Color(0xFFF3F4F6);
   static const unSelectedTextField = Color(0x4DF3F4F6);
   static const darkGrey = Color(0xFF111827);
+  static const grey = Color(0xFF7C7B7B);
+  static const grey99 = Color(0xFF999999);
+  static const red50 = Color(0xFFFEE8E9);
 }

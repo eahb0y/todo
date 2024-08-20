@@ -21,5 +21,19 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "add_event": MessageLookupByLibrary.simpleMessage("+ Add Event"),
+        "delete_event": MessageLookupByLibrary.simpleMessage("Delete Event"),
+        "desc": MessageLookupByLibrary.simpleMessage("Description"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "event_color": MessageLookupByLibrary.simpleMessage("Priority color"),
+        "event_desc": MessageLookupByLibrary.simpleMessage("Event description"),
+        "event_location":
+            MessageLookupByLibrary.simpleMessage("Event location"),
+        "event_name": MessageLookupByLibrary.simpleMessage("Event name"),
+        "event_time": MessageLookupByLibrary.simpleMessage("Event time"),
+        "reminder": MessageLookupByLibrary.simpleMessage("Reminder"),
+        "schedule": MessageLookupByLibrary.simpleMessage("Schedule")
+      };
 }

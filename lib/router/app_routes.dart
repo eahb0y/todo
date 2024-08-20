@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/features/add_event/presentation/bloc/add_event_bloc.dart';
+import 'package:todo/features/add_event/presentation/page/add_event_page.dart';
+import 'package:todo/features/event_page/presentation/page/event_page.dart';
 import 'package:todo/features/home/presentation/bloc/home_bloc.dart';
 import 'package:todo/features/home/presentation/page/home_page.dart';
 import 'package:todo/features/initial/presentation/page/initial_page.dart';
@@ -27,11 +30,29 @@ class AppRoutes {
             child: const HomePage(),
           ),
         );
+      case Routes.addEvent:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<AddEventBloc>(
+            create: (context) => sl<AddEventBloc>(),
+            child: AddEventPage(
+              date: settings.arguments is String
+                  ? settings.arguments as String
+                  : "",
+            ),
+          ),
+        );
+      case Routes.event:
+        return MaterialPageRoute(
+            builder: (_) => EventPage(
+                  date: settings.arguments is String
+                      ? settings.arguments as String
+                      : "",
+                ));
       default:
         return MaterialPageRoute(
           builder: (_) => BlocProvider<HomeBloc>(
             create: (context) => sl<HomeBloc>(),
-            child: HomePage(),
+            child: const HomePage(),
           ),
         );
     }

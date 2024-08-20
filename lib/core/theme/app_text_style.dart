@@ -35,4 +35,44 @@ class AppTextStyle{
     fontWeight: FontWeight.w500,
     color: AppColors.darkGrey,
   );
+  static const textFieldTitle = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.darkGrey,
+  );
+  static const textButtonEdit = TextStyle(
+    color: AppColors.white,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  );
+  static const eventName = TextStyle(
+    color: AppColors.white,
+    fontSize: 26,
+    fontWeight: FontWeight.w600,
+  );
+  static const eventLocation = TextStyle(
+    color: AppColors.white,
+    fontSize: 8,
+    fontWeight: FontWeight.w400,
+  );
+  static const eventTime = TextStyle(
+    color: AppColors.white,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
+  static const eventTitle = TextStyle(
+    color: AppColors.black,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+  static const eventDesc = TextStyle(
+    color: AppColors.grey,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static const eventDescGrey = TextStyle(
+    color: AppColors.grey99,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
 }

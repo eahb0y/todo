@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/theme/app_text_style.dart';
 import 'package:todo/core/utils/app_utils.dart';
+
 import 'colors/app_colors.dart';
 
 final appTheme = ThemeData(
@@ -57,8 +58,11 @@ final lightTheme = appTheme.copyWith(
       surfaceTintColor: AppColors.white,
       shadowColor: Colors.black,
       toolbarHeight: 56,
-      iconTheme: IconThemeData(color: ThemeColors.white),
-      titleSpacing: 0),
+    iconTheme: IconThemeData(
+      color: ThemeColors.iconColor,
+    ),
+    titleSpacing: 0,
+  ),
   inputDecorationTheme: const InputDecorationTheme(
     alignLabelWithHint: true,
     contentPadding: AppUtils.kPaddingVer16Hor14,
@@ -103,7 +107,7 @@ final lightTheme = appTheme.copyWith(
     filled: true,
     isDense: true,
     prefixStyle: AppTextStyle.textField,
-    fillColor: AppColors.white,
+    fillColor: AppColors.textField,
     floatingLabelAlignment: FloatingLabelAlignment.start,
     // floatingLabelBehavior: FloatingLabelBehavior.always,
   ),

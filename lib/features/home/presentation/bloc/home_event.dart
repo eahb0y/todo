@@ -40,3 +40,10 @@ final class SelectDateCallEvent extends HomeEvent {
         day,
       ];
 }
+
+final class InitialCallEvent extends HomeEvent {
+  const InitialCallEvent();
+
+  @override
+  List<Object?> get props => [];
+}

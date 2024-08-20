@@ -1,1 +1,14 @@
-{}
+{
+  "schedule": "Schedule",
+  "add_event": "+ Add Event",
+  "add": "Add",
+  "delete_event": "Delete Event",
+  "event_name": "Event name",
+  "event_desc": "Event description",
+  "event_location": "Event location",
+  "event_color": "Priority color",
+  "event_time": "Event time",
+  "edit": "Edit",
+  "reminder": "Reminder",
+  "desc": "Description"
+}

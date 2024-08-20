@@ -6,6 +6,8 @@ class HomeState extends Equatable {
   final int currentDay;
   final int currentMonth;
   final int? selectedMonthPage;
+  final bool isLoading;
+  final List<Event>? eventsList;
 
   const HomeState({
     required this.currentDate,
@@ -13,6 +15,8 @@ class HomeState extends Equatable {
     required this.currentDay,
     required this.currentMonth,
     this.selectedMonthPage,
+    required this.isLoading,
+    this.eventsList,
   });
 
   HomeState copyWith({
@@ -21,6 +25,8 @@ class HomeState extends Equatable {
     int? currentDay,
     int? currentMonth,
     int? selectedMonthPage,
+    bool? isLoading,
+    List<Event>? eventsList,
   }) {
     return HomeState(
       currentDate: currentDate ?? this.currentDate,
@@ -28,6 +34,8 @@ class HomeState extends Equatable {
       currentDay: currentDay ?? this.currentDay,
       currentMonth: currentMonth ?? this.currentMonth,
       selectedMonthPage: selectedMonthPage ?? this.selectedMonthPage,
+      isLoading: isLoading ?? this.isLoading,
+      eventsList: eventsList ?? this.eventsList,
     );
   }
 
@@ -38,5 +46,7 @@ class HomeState extends Equatable {
         currentDay,
         currentMonth,
         selectedMonthPage,
+        isLoading,
+        eventsList,
       ];
 }

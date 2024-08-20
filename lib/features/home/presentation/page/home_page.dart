@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:todo/core/utils/app_utils.dart';
 import 'package:todo/features/home/presentation/bloc/home_bloc.dart';
 import 'package:todo/features/home/presentation/micin/home_mixin.dart';
+import 'package:todo/features/home/presentation/page/widget/add_event_widget.dart';
 import 'package:todo/features/home/presentation/page/widget/app_bar_widget.dart';
 import 'package:todo/features/home/presentation/page/widget/calendar_days_widget.dart';
 import 'package:todo/features/home/presentation/page/widget/calendar_header_widget.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> with HomeMixin {
   @override
   void initState() {
     initController();
+    context.read<HomeBloc>().add(const InitialCallEvent());
     super.initState();
   }
 
@@ -62,7 +64,12 @@ class _HomePageState extends State<HomePage> with HomeMixin {
               CalendarDaysWidget(
                 currentDate: state.currentDate,
                 pageController: pageController,
+                eventsList: state.eventsList ?? [],
               ),
+              AppUtils.kGap20,
+              AddEventWidget(
+                currentDate: state.currentDate.toString(),
+              )
             ],
           ),
         );

@@ -49,6 +49,126 @@ class AppLocalization {
   static AppLocalization? maybeOf(BuildContext context) {
     return Localizations.of<AppLocalization>(context, AppLocalization);
   }
+
+  /// `Schedule`
+  String get schedule {
+    return Intl.message(
+      'Schedule',
+      name: 'schedule',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `+ Add Event`
+  String get add_event {
+    return Intl.message(
+      '+ Add Event',
+      name: 'add_event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Event`
+  String get delete_event {
+    return Intl.message(
+      'Delete Event',
+      name: 'delete_event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event name`
+  String get event_name {
+    return Intl.message(
+      'Event name',
+      name: 'event_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event description`
+  String get event_desc {
+    return Intl.message(
+      'Event description',
+      name: 'event_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event location`
+  String get event_location {
+    return Intl.message(
+      'Event location',
+      name: 'event_location',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Priority color`
+  String get event_color {
+    return Intl.message(
+      'Priority color',
+      name: 'event_color',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Event time`
+  String get event_time {
+    return Intl.message(
+      'Event time',
+      name: 'event_time',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reminder`
+  String get reminder {
+    return Intl.message(
+      'Reminder',
+      name: 'reminder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Description`
+  String get desc {
+    return Intl.message(
+      'Description',
+      name: 'desc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
