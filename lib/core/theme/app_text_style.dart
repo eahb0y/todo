@@ -75,4 +75,15 @@ class AppTextStyle{
     fontSize: 10,
     fontWeight: FontWeight.w400,
   );
+  static const eventTitleText = TextStyle(
+    color: AppColors.eventTitle,
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+  );
+  static const eventCardLocation = TextStyle(
+    color: AppColors.eventTitle,
+    fontSize: 8,
+    fontWeight: FontWeight.w400,
+  );
+
 }

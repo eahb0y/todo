@@ -8,7 +8,6 @@ class LocalSource {
 
   ///insert data
   Future<int> insertEvent(Event event) async {
-    print("dataaaza :: ${event.eventDate}");
     return await database.insert(
       'events',
       event.toMap(),
@@ -38,13 +37,12 @@ class LocalSource {
   }
 
   ///fing by date
-  Future<List<Event>> getEventsByDate(DateTime date) async {
-    final String formattedDate = date.toIso8601String().split('T').first;
+  Future<List<Event>> getEventsByDate(String date) async {
 
     final List<Map<String, dynamic>> maps = await database.query(
       'events',
       where: 'event_date = ?',
-      whereArgs: [formattedDate],
+      whereArgs: [date],
     );
     return List<Event>.from(maps.map((map) => Event.fromMap(map)));
   }
@@ -67,4 +65,5 @@ class LocalSource {
       whereArgs: [id],
     );
   }
+
 }

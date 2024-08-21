@@ -38,7 +38,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   void _selectDateCall(SelectDateCallEvent event, Emitter<HomeState> emit) {
-    print("selected month ${event.month}");
     emit(state.copyWith(
         currentDate: DateTime(
       event.year ?? state.currentDate.year,
@@ -49,11 +48,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _initialCall(
       InitialCallEvent event, Emitter<HomeState> emit) async {
-    List<Event> listOfEvents = [];
+    Map<String, List<Event>> eventsMap = {};
     emit(state.copyWith(isLoading: true));
+
     List<Event> result = await sl<LocalSource>().getAllEvents();
-    print("resulttt :: ${result.length}");
-    listOfEvents.addAll(result);
-    emit(state.copyWith(eventsList: [...listOfEvents], isLoading: false));
+
+    for (var event in result) {
+      String dateKey = event.eventDate.substring(0, 10);
+      if (eventsMap.containsKey(dateKey)) {
+        eventsMap[dateKey]!.add(event);
+      } else {
+        eventsMap[dateKey] = [event];
+      }
+    }
+    emit(state.copyWith(eventsList: {}..addAll(eventsMap), isLoading: false));
   }
 }

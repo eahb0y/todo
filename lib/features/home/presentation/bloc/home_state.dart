@@ -7,7 +7,7 @@ class HomeState extends Equatable {
   final int currentMonth;
   final int? selectedMonthPage;
   final bool isLoading;
-  final List<Event>? eventsList;
+  final Map<String, List<Event>>? eventsList;
 
   const HomeState({
     required this.currentDate,
@@ -26,7 +26,7 @@ class HomeState extends Equatable {
     int? currentMonth,
     int? selectedMonthPage,
     bool? isLoading,
-    List<Event>? eventsList,
+    Map<String, List<Event>>? eventsList,
   }) {
     return HomeState(
       currentDate: currentDate ?? this.currentDate,

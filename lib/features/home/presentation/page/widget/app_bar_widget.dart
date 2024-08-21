@@ -40,8 +40,8 @@ class AppBarWidget extends StatelessWidget {
               icon: SvgPicture.asset("assets/svg/ic_down.svg"),
               value: selectedYear,
               onChanged: (int? year) {
-                context.read<HomeBloc>().add(SelectYearCallEvent(
-                      selectedYear: year ?? 0,
+                context.read<HomeBloc>().add(SelectDateCallEvent(
+                      year: year ?? 0,
                     ));
                 if (year != null) {
                   pageController.jumpToPage(selectedMonthPage);

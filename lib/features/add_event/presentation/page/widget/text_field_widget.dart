@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/core/theme/app_text_style.dart';
+import 'package:todo/core/theme/colors/app_colors.dart';
 import 'package:todo/core/utils/app_utils.dart';
 
 class TextFieldWidget extends StatelessWidget {
@@ -9,6 +10,7 @@ class TextFieldWidget extends StatelessWidget {
   final Widget? icon;
   final Function()? onTap;
   final bool? onlyRead;
+  final bool checkField;
 
   const TextFieldWidget({
     super.key,
@@ -18,6 +20,7 @@ class TextFieldWidget extends StatelessWidget {
     this.icon,
     this.onlyRead,
     this.onTap,
+    required this.checkField,
   });
 
   @override
@@ -38,6 +41,21 @@ class TextFieldWidget extends StatelessWidget {
           controller: controller,
           decoration: InputDecoration(
             suffixIcon: icon,
+            border: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: checkField
+                    ? AppColors.eventCardRed
+                    : AppColors.textField,
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: AppUtils.kBorderRadius8,
+              borderSide: BorderSide(
+                color: checkField
+                    ? AppColors.eventCardRed
+                    : AppColors.textField,
+              ),
+            ),
           ),
         )
       ],

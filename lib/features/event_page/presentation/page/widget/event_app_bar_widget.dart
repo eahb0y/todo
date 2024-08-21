@@ -10,12 +10,14 @@ class EventAppBarWidget extends StatelessWidget {
   final String title;
   final String time;
   final String location;
+  final Function() onEdit;
 
   const EventAppBarWidget({
     super.key,
     required this.time,
     required this.title,
     required this.location,
+    required this.onEdit,
   });
 
   @override
@@ -57,7 +59,7 @@ class EventAppBarWidget extends StatelessWidget {
                   ),
                 ),
                 TextButton.icon(
-                  onPressed: () {},
+                  onPressed:onEdit,
                   label: Text(
                     AppLocalization.current.edit,
                     style: AppTextStyle.textButtonEdit,

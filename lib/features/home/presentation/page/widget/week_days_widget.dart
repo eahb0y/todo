@@ -6,19 +6,17 @@ class WeekDaysWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildWeekDay('Mon'),
-          _buildWeekDay('Tue'),
-          _buildWeekDay('Wed'),
-          _buildWeekDay('Thu'),
-          _buildWeekDay('Fri'),
-          _buildWeekDay('Sat'),
-          _buildWeekDay('Sun'),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildWeekDay('Mon'),
+        _buildWeekDay('Tue'),
+        _buildWeekDay('Wed'),
+        _buildWeekDay('Thu'),
+        _buildWeekDay('Fri'),
+        _buildWeekDay('Sat'),
+        _buildWeekDay('Sun'),
+      ],
     );
   }
 }

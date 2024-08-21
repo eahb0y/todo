@@ -33,7 +33,7 @@ final appTheme = ThemeData(
 );
 
 final lightTheme = appTheme.copyWith(
-  scaffoldBackgroundColor: AppColors.white,
+  scaffoldBackgroundColor: ThemeColors.scaffoldColor,
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
     primary: ThemeColors.primaryColor,
@@ -53,9 +53,9 @@ final lightTheme = appTheme.copyWith(
       elevation: 0,
       centerTitle: false,
       scrolledUnderElevation: 1,
-      foregroundColor: AppColors.white,
-      backgroundColor: AppColors.white,
-      surfaceTintColor: AppColors.white,
+      foregroundColor: ThemeColors.scaffoldColor,
+      backgroundColor: ThemeColors.scaffoldColor,
+      surfaceTintColor: ThemeColors.scaffoldColor,
       shadowColor: Colors.black,
       toolbarHeight: 56,
     iconTheme: IconThemeData(

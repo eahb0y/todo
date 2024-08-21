@@ -27,12 +27,16 @@ final class OnSubmitCallEvent extends AddEventEvent {
   final String eventDesc;
   final String eventLocation;
   final String date;
+  final int id;
+  final bool isEdit;
 
   const OnSubmitCallEvent({
     required this.eventName,
     required this.eventDesc,
     required this.eventLocation,
     required this.date,
+    required this.id,
+    required this.isEdit,
   });
 
   @override
@@ -41,5 +45,16 @@ final class OnSubmitCallEvent extends AddEventEvent {
         eventDesc,
         eventLocation,
         date,
+        id,
+        isEdit,
       ];
+}
+
+final class GetEventDataCallEvent extends AddEventEvent {
+  final int eventId;
+
+  const GetEventDataCallEvent({required this.eventId});
+
+  @override
+  List<Object?> get props => [eventId];
 }

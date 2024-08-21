@@ -3,6 +3,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todo/core/local_source/local_source.dart';
 import 'package:todo/features/add_event/presentation/bloc/add_event_bloc.dart';
+import 'package:todo/features/event_page/presentation/bloc/event_bloc.dart';
 import 'package:todo/features/home/presentation/bloc/home_bloc.dart';
 
 final sl = GetIt.instance;
@@ -12,6 +13,7 @@ Future<void> init() async {
   sl.registerSingleton<LocalSource>(LocalSource(database));
   _homeFeatures();
   _addEventFeatures();
+  _eventFeatures();
 }
 
 void _homeFeatures() {
@@ -20,6 +22,10 @@ void _homeFeatures() {
 
 void _addEventFeatures() {
   sl.registerFactory(() => AddEventBloc());
+}
+
+void _eventFeatures() {
+  sl.registerFactory(() => EventBloc());
 }
 
 Future<void> initDb() async {

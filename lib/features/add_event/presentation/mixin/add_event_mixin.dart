@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:todo/core/event/model/event_model.dart';
 
 mixin AddEventMixin {
   late TextEditingController eventName;
@@ -20,7 +21,14 @@ mixin AddEventMixin {
     eventTime.dispose();
   }
 
-  void setControllers(String time){
+  void setControllers(String time, Event? event){
+    eventTime.text = time;
+    eventName.text = event?.eventName ?? "";
+    eventDesc.text = event?.eventDescription ?? "";
+    eventPlace.text = event?.eventLocation ?? "";
+  }
+
+  void setTime(String time){
     eventTime.text = time;
   }
 }

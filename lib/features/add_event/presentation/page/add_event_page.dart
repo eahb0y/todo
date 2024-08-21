@@ -4,17 +4,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo/core/theme/colors/app_colors.dart';
 import 'package:todo/core/utils/app_utils.dart';
 import 'package:todo/core/widget/loading/custom_loading.dart';
+import 'package:todo/features/add_event/presentation/argument/add_event_argument.dart';
 import 'package:todo/features/add_event/presentation/bloc/add_event_bloc.dart';
 import 'package:todo/features/add_event/presentation/mixin/add_event_mixin.dart';
 import 'package:todo/features/add_event/presentation/page/widget/text_field_widget.dart';
 import 'package:todo/generated/l10n.dart';
 
 class AddEventPage extends StatefulWidget {
-  final String date;
+  final AddEventArgument? argument;
 
   const AddEventPage({
     super.key,
-    required this.date,
+    required this.argument,
   });
 
   @override
@@ -25,6 +26,11 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
   @override
   void initState() {
     initController();
+    if (widget.argument?.event != null) {
+      context
+          .read<AddEventBloc>()
+          .add(GetEventDataCallEvent(eventId: widget.argument?.event?.id ?? 0));
+    }
     super.initState();
   }
 
@@ -32,8 +38,13 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
   Widget build(BuildContext context) {
     return BlocListener<AddEventBloc, AddEventState>(
       listener: (context, state) {
-        if (state.setValue && (state.selectedTime?.isNotEmpty ?? false)) {
-          setControllers(state.selectedTime ?? "");
+        if (state.setValue &&
+            ((state.selectedTime?.isNotEmpty ?? false) ||
+                (state.event != null))) {
+          setControllers(
+            state.selectedTime ?? "",
+            widget.argument?.event,
+          );
         }
       },
       child: BlocBuilder<AddEventBloc, AddEventState>(
@@ -48,12 +59,14 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
                   TextFieldWidget(
                     controller: eventName,
                     title: AppLocalization.current.event_name,
+                    checkField: (eventName.text.isEmpty && state.onSubmit),
                   ),
                   AppUtils.kBoxHeight16,
                   TextFieldWidget(
                     controller: eventDesc,
                     title: AppLocalization.current.event_desc,
                     textFieldLines: 4,
+                    checkField: (eventDesc.text.isEmpty && state.onSubmit),
                   ),
                   AppUtils.kBoxHeight16,
                   TextFieldWidget(
@@ -65,6 +78,7 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
                         "assets/svg/ic_location.svg",
                       ),
                     ),
+                    checkField: (eventPlace.text.isEmpty && state.onSubmit),
                   ),
                   AppUtils.kBoxHeight16,
                   ClipRRect(
@@ -91,9 +105,9 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
                           underline: const SizedBox(),
                           items: [
                             for (var color in [
-                              0xFFEE8F00,
-                              0xFFEE2B00,
-                              0xFF009FEE
+                              0xFFf3d1c7,
+                              0xFFf6e2c9,
+                              0xFFc8e7f4
                             ])
                               DropdownMenuItem<int>(
                                 value: color,
@@ -127,13 +141,18 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
                       );
                       if (context.mounted) {
                         if (result != null) {
+                          String selectedMinute = (result.minute < 9)
+                              ? "0${result.minute}"
+                              : "${result.minute}";
+                          setTime("${result.hour}:$selectedMinute");
                           context.read<AddEventBloc>().add(
                                 SelectEventTimeCallEvent(
-                                    time: "${result.hour}:${result.minute}"),
+                                    time: "${result.hour}:$selectedMinute"),
                               );
                         }
                       }
                     },
+                    checkField: (eventTime.text.isEmpty && state.onSubmit),
                   ),
                 ],
               ),
@@ -147,8 +166,11 @@ class _AddEventPageState extends State<AddEventPage> with AddEventMixin {
                                 eventDesc: eventDesc.text,
                                 eventName: eventName.text,
                                 eventLocation: eventPlace.text,
-                                date: widget.date,
-                              ));
+                                  date: widget.argument?.date ?? "",
+                                  id: widget.argument?.event?.id ?? -1,
+                                  isEdit: widget.argument?.isEditEvent ?? false,
+                                ),
+                              );
                         }
                       : null,
                   child: state.isLoading
